@@ -70,7 +70,7 @@ The network automation station has no WYSIWYG editor. We can use the `vi` or the
 #### basic.py
 
 ```
-# basic.py
+# basicR1.py
 import getpass
 import telnetlib
 
@@ -100,11 +100,14 @@ tn.write(b"write\n")
 print(tn.read_all().decode('ascii'))
 ```
 
-
 The `telnetlib` documentation is very explicit about wanting "byte strings"; thats is why the string must be encoded (the `b` letter in the script.
 <!---
 Regular Python 3 strings are multi-byte character strings without an explicit encoding attached; to make byte strings of them means either rendering them down, or generating them as pre-rendered bytestring literals.
 -->
+
+**Running the script:**
+`root@NetworkAutomation-1:~#python3 basicR1.py`
+
 
 **Note:** Python language does not use separations such us curly braquets, instead it uses **identation**.
 
@@ -130,8 +133,19 @@ login local
 transport input all
 end
 
+write
 ```
 
+2. Test the network with a PING from the Network Automation station:
+   `ping 192.168.122.250`
+3. Make a Telnet:
+   `telnet 192.168.122.250`
+4. Run some CLI commands:
+   `sh vlan brief`
+   `sh ip int brief`
+
+
+#### Basic S1 script
 
 
 
