@@ -108,7 +108,7 @@ The `telnetlib` documentation is very explicit about wanting "byte strings"; tha
 Regular Python 3 strings are multi-byte character strings without an explicit encoding attached; to make byte strings of them means either rendering them down, or generating them as pre-rendered bytestring literals.
 -->
 
-**Running the script:**
+**Running the R1 script:**
 ```
 root@NetworkAutomation-1:~#python3 basicR1.py
 ```
@@ -154,5 +154,64 @@ write
 
 #### Basic S1 script
 
+1. In the S1 console, run  `show vlan`
+
+which must show only the `vlan 1` configured before in the CLI.
+
+2. Using any Terminal editor create the `basicS1.py` script:
+   
+```
+# Basic S1 script
+import getpass
+import telnetlib
+
+HOST = "192.168.122.250"
+user = input("Enter your telnet username: ")
+password = getpass.getpass()
+
+tn = telnetlib.Telnet(HOST)
+
+tn.read_until(b"Username: ")
+tn.write(user.encode('ascii') + b"\n")
+if password:
+    tn.read_until(b"Password: ")
+    tn.write(password.encode('ascii') + b"\n")
+
+tn.write(b"enable\n")
+tn.write(b"cisco\n")
+
+tn.write(b"conf t\n")
+tn.write(b"vlan 2\n")
+tn.write(b"name Python_vlan_2\n")
+# tn.write(b"vlan 3\n")
+# tn.write(b"name Python_vlan_3\n")
+# tn.write(b"vlan 4\n")
+# tn.write(b"name Python_vlan_4\n")
+# tn.write(b"vlan 5\n")
+# tn.write(b"name Python_vlan_5\n")
+# tn.write(b"vlan 6\n")
+# tn.write(b"name Python_vlan_6\n")
+tn.write(b"exit\n")
+tn.write(b"end\n")
+tn.write(b"exit\n")
+tn.write(b"write\n")
+
+print(tn.read_all().decode('ascii'))
+```
+
+Uncomment the lines with `#` to configure more than one vlan.
+
+3. Make `sh vlan` in the S1 console to check the vlan 2 is configured
+
+**Running the S1 script:**
+```
+root@NetworkAutomation-1:~#python3 basicS1.py
+```
+
+
+**The power of Python programming to configure a network comes clear when repeated instructions can be coded with loops.**
+
+* Review the code in the Python scripts:
+* Test these scripts to configure multiple Loopback interfaces in R1, and vlans in S1.
 
 
