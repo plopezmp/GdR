@@ -6,7 +6,7 @@
 <img src='figs/MIRED.png' width='750'>
 
 ## Network Automation
-Network Automation is a docker system with linux and Ansible installed. The GNS3 appliance is in [Network Automation link]([https://www.gns3.com/marketplace/labs/network-automation-3](https://gns3.com/marketplace/appliances/network-automation)).
+Network Automation is a docker system with linux and Ansible installed. The GNS3 appliance is in [Network Automation link](https://gns3.com/marketplace/appliances/network-automation).
 
 The network interfaces are configured as follows:
 
