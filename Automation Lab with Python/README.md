@@ -55,10 +55,13 @@ write
 2. The line `transport input all` is required to be able to stablish Telnet and SSH connections. The user and password (`plm` and `cisco`) could be personalized.
 3. `R1#show ip int brief` 
 4. Now, is it possible to test the telnet connection to R1 from the automation station Terminal:
-   `root@NetworkAutomation-1:~#telnet 192.168.122.251`
-   `Username: plm`
-   `password: ` write `cisco`.
-
+   ```
+   root@NetworkAutomation-1:~#telnet 192.168.122.251
+   Username: plm
+   password: 
+   ```
+   write `cisco` in the password.
+   
    To enter in protected mode (`enable`) the password we have set is `cisco`.
 
 ## Basic Python script
