@@ -1,0 +1,6 @@
+[routers]
+R1
+R2V
+
+[switches]
+switchR3

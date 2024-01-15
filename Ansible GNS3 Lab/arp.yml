@@ -1,0 +1,27 @@
+---
+- name: GNS3 Cisco LAB
+  hosts: routers, switches
+  gather_facts: false
+  connection: local
+  
+  tasks:
+    - name: Obtain Login Information
+      include_vars: secrets.yml
+
+    - name: Define Provider
+      set_fact:
+        provider:
+          host: "{{ ansible_host }}"
+          username: "{{ creds['username'] }}"
+          password: "{{ creds['password'] }}"
+          auth_pass: "{{ creds['auth_pass'] }}"
+          timeout: 60
+
+    - name: Verification
+      ios_command:
+        provider: "{{ provider }}"
+        commands:
+          - show arp
+      register: if_data
+    - debug:
+        var: if_data['stdout_lines'][0]
