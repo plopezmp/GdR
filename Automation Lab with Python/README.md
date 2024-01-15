@@ -106,7 +106,9 @@ Regular Python 3 strings are multi-byte character strings without an explicit en
 -->
 
 **Running the script:**
-`root@NetworkAutomation-1:~#python3 basicR1.py`
+```
+root@NetworkAutomation-1:~#python3 basicR1.py
+```
 
 
 **Note:** Python language does not use separations such us curly braquets, instead it uses **identation**.
@@ -141,8 +143,10 @@ write
 3. Make a Telnet:
    `telnet 192.168.122.250`
 4. Run some CLI commands:
-   `sh vlan brief`
-   `sh ip int brief`
+   ```
+   sh vlan brief
+   sh ip int brief
+   ```
 
 
 #### Basic S1 script
