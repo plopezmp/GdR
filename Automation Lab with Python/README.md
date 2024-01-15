@@ -103,7 +103,7 @@ tn.write(b"write\n")
 print(tn.read_all().decode('ascii'))
 ```
 
-The `telnetlib` documentation is very explicit about wanting "byte strings"; thats is why the string must be encoded (the `b` letter in the script.
+The `telnetlib` documentation is very explicit about wanting "byte strings"; thats is why the string must be encoded (the `b` letter in the script. 
 <!---
 Regular Python 3 strings are multi-byte character strings without an explicit encoding attached; to make byte strings of them means either rendering them down, or generating them as pre-rendered bytestring literals.
 -->
@@ -211,7 +211,7 @@ root@NetworkAutomation-1:~#python3 basicS1.py
 
 **The power of Python programming to configure a network comes clear when repeated instructions can be coded with loops.**
 
-* Review the code in the Python scripts:
+* Review the code in the Python scripts: `scr1.py` and `scr2.py`.
 * Test these scripts to configure multiple Loopback interfaces in R1, and vlans in S1.
 
 
