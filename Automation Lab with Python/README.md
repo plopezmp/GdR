@@ -6,7 +6,7 @@ This lab aims to use Python programs to make a basic configuration of network no
 -->
 <img src='figs/RED1.png' width='750'>
 
-## Atomation station
+## Automation station
 Network Automation is a docker system with linux and Python installed. The GNS3 appliance is in [Network Automation link](https://gns3.com/marketplace/appliances/network-automation).
 
 The network interfaces are configured as follows:
@@ -48,6 +48,8 @@ line vty 0 4
 login local
 transport input all
 end
+
+write
 ```
 
 2. The line `transport input all` is required to be able to stablish Telnet and SSH connections. The user and password (`plm` and `cisco`) could be personalized.
@@ -93,6 +95,7 @@ tn.write(b"ip add 1.1.1.1 255.255.255.255\n")
 tn.write(b"end\n")
 tn.write(b"sh ip int brief\n")
 tn.write(b"exit\n")
+tn.write(b"write\n")
 
 print(tn.read_all().decode('ascii'))
 ```
@@ -102,5 +105,33 @@ The `telnetlib` documentation is very explicit about wanting "byte strings"; tha
 <!---
 Regular Python 3 strings are multi-byte character strings without an explicit encoding attached; to make byte strings of them means either rendering them down, or generating them as pre-rendered bytestring literals.
 -->
+
+**Note:** Python language does not use separations such us curly braquets, instead it uses **identation**.
+
+
+## S1 configuration
+S1 is an IOSv Cisco switch that can be configured remotely with SSH or Telnet.
+1. Open a console to S1 and make a basic IP configuration.
+
+```
+enable
+conf t
+int vlan 1
+ip add 192.168.122.250 255.255.255.0
+no sh
+exit
+
+host S1
+enable password cisco
+username plm password cisco
+
+line vty 0 4
+login local
+transport input all
+end
+
+```
+
+
 
 
