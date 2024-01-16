@@ -25,7 +25,7 @@ def configure_device(host, user, password, config_commands):
     for command in config_commands:
         tn.write(command.encode('ascii') + b"\n")
 
-    # tn.write(b"exit\n")
+    tn.write(b"exit\n")
     tn.write(b"end\n")
     tn.write(b"exit\n")
 
@@ -58,8 +58,6 @@ def main():
         "name Python_vlan_5",
         "vlan 6",
         "name Python_vlan_6",
-        "end",
-        "exit"
     ]
 
     for ip in ips:
