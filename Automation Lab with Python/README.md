@@ -214,4 +214,15 @@ root@NetworkAutomation-1:~#python3 basicS1.py
 * Review the code in the Python scripts: `scr1.py` and `scr2.py`.
 * Test these scripts to configure multiple Loopback interfaces in R1, and vlans in S1.
 
+**Finally**, is it possible to create a file with common data required in a script, then read it into the Python script and load these data in variables used. For example, the file `data.cfg` has the two IPs of the nodes we want to configure, and two lines with the user and password. 
+
+```
+192.168.122.250
+192.168.122.251
+plm
+cisco
+```
+
+and the Python to read this file:
+
 
