@@ -1,5 +1,5 @@
 # Intro to Network Automation with Python
-This lab aims to use Python programs to make a basic configuration of network nodes. The [telnetlib](https://docs.python.org/3/library/telnetlib.html) library seves to open a Telnet session and send configuration commands to the remote node.
+This lab aims to use Python programs to make a basic configuration of network nodes. The [telnetlib](https://docs.python.org/3/library/telnetlib.html) library serves to open a Telnet session and send configuration commands to the remote node.
 
 <!---
 ![Alt text](MIRED.png)
