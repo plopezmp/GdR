@@ -77,6 +77,8 @@ The network automation station has no WYSIWYG editor. We can use the `vi` or the
 
 #### basic.py
 
+To make Telnet to R1 and configure interface `Loopback 0`, (l0).
+
 ```
 # basicR1.py
 import getpass
