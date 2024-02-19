@@ -245,7 +245,7 @@ root@NetworkAutomation-1:~#python3 basicS1.py
 * Review the code in the Python scripts: `scr1.py` and `scr2.py`.
 * Test these scripts to configure multiple Loopback interfaces in R1, and vlans in S1.
 
-  Note that the Python environment is already set in the first line of these scripts and there is no need to call `python` if they are set
+  Note that the Python environment is already set in the first line of these scripts and there is no need to call `python3` if they are set
   executables (`chamod +x`).
   
 
