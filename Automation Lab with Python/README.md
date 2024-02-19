@@ -28,6 +28,7 @@ The network interfaces are configured as follows:
 
 1. Copy this lines with the Automation station stopped.
 2. Start the node (*Play*). It will catch an IP from the localhost via DHCP
+   
    *Note*: this IP is important because we will configure R1 in the same subnet
 4. Make a PING to Internet (e.g., 8.8.8.8)
 5. Make `apt-get update` to update references in Ubuntu
