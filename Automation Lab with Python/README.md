@@ -4,7 +4,7 @@ This lab aims to use Python programs to make a basic configuration of network no
 <!---
 ![Alt text](MIRED.png)
 -->
-<img src='figs/RED1' width='750'>
+<img src='figs/RED1.jpg' width='750'>
 
 ## Automation station
 Network Automation is a docker system with linux and Python installed. The GNS3 appliance is in [Network Automation link](https://gns3.com/marketplace/appliances/network-automation).
