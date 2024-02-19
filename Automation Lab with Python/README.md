@@ -128,7 +128,7 @@ After that, we could check that the `l0` interface has been configured. In the R
 R1#sh ip int brief
 ```
 
-Now, we could add lines
+We could add lines
 
 ```
 tn.write(b"int l1\n")
@@ -137,16 +137,9 @@ tn.write(b"router ospf 1\n")
 tn.write(b"network 0.0.0.0 255.255.255.255 area0\n")
 ```
 
-to the `bassicR1.py` script and configure a second loopback interface, and OSPF.
+to the `bassicR1.py` script and configure a second loopback interface, and OSPF, like 
+we have in the script `scr1.py` that will be tested later.
 
-Run this script again and check the changes that produces in R1.
-
-<!---
-As a reference, script `scr1.py`, if executable (`chamod +x`) can be used to configure up to `n` Loopback interfaces and OSPF, as follows
-```
-root@NetworkAutomation-1:~#scr1.py
-```
--->
 
 ## S1 configuration
 S1 is an IOSv Cisco switch that can be configured remotely with SSH or Telnet.
