@@ -29,6 +29,8 @@ The network interfaces are configured as follows:
 1. Copy this lines with the Automation station stopped.
 2. Start the node (*Play*)
 3. Make a PING to Internet (e.g., 8.8.8.8)
+4. Make `apt-get update` to update references in Ubuntu
+5. Install Python: `apt-get python`
 
 Now start the two nodes, multilayer switch S1 and the router R1.
 
