@@ -141,11 +141,12 @@ to the `bassicR1.py` script and configure a second loopback interface, and OSPF.
 
 Run this script again and check the changes that produces in R1.
 
+<!---
 As a reference, script `scr1.py`, if executable (`chamod +x`) can be used to configure up to `n` Loopback interfaces and OSPF, as follows
 ```
 root@NetworkAutomation-1:~#scr1.py
 ```
-Note that the Python environment is already set in the first line of the script and there is no need to call `python`.
+-->
 
 ## S1 configuration
 S1 is an IOSv Cisco switch that can be configured remotely with SSH or Telnet.
@@ -243,6 +244,10 @@ root@NetworkAutomation-1:~#python3 basicS1.py
 
 * Review the code in the Python scripts: `scr1.py` and `scr2.py`.
 * Test these scripts to configure multiple Loopback interfaces in R1, and vlans in S1.
+
+  Note that the Python environment is already set in the first line of these scripts and there is no need to call `python` if they are set
+  executables (`chamod +x`).
+  
 
 **Finally**, is it possible to create a file with common data required in a script, then read it into the Python script and load these data in variables used. For example, the file `data.cfg` has the two IPs of the nodes we want to configure, and two lines with the user and password. 
 
