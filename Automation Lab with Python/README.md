@@ -135,8 +135,9 @@ tn.write(b"int l1\n")
 tn.write(b"ip add 2.2.2.2 255.255.255.255\n")
 ```
 
-to the `bassic.py` script and configure a second loopback interface.
+to the `bassicR1.py` script and configure a second loopback interface.
 
+Run this script again and check the changes that produces in R1.
 
 ## S1 configuration
 S1 is an IOSv Cisco switch that can be configured remotely with SSH or Telnet.
