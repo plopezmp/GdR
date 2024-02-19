@@ -2,7 +2,7 @@
 """
 This script is executable.
 This script intend to merge 'scr1.py' and 'scr2.py' and
-read commong parameter inputs from the 'data.cfg' file.
+read common parameter inputs from the 'data.cfg' file.
 """
 import getpass
 import telnetlib
