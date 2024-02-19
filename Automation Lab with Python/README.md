@@ -32,7 +32,7 @@ The network interfaces are configured as follows:
 
 
 ## R1 configuration
-1. Open a console to R1 and set an IP address like follows
+1. Open a console at R1 and set an IP address like follows
 
 ```
 conf t
