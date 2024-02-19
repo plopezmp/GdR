@@ -115,6 +115,8 @@ The `telnetlib` documentation is very explicit about wanting "byte strings"; tha
 Regular Python 3 strings are multi-byte character strings without an explicit encoding attached; to make byte strings of them means either rendering them down, or generating them as pre-rendered bytestring literals.
 -->
 
+**Note:** Python language does not use separations such us curly braquets, instead it uses **identation**.
+
 **Running the R1 script:**
 ```
 root@NetworkAutomation-1:~#python3 basicR1.py
@@ -126,8 +128,14 @@ After that, we could check that the `l0` interface has been configured. In the R
 R1#sh ip int brief
 ```
 
+Now, we could add lines
 
-**Note:** Python language does not use separations such us curly braquets, instead it uses **identation**.
+```
+tn.write(b"int l1\n")
+tn.write(b"ip add 2.2.2.2 255.255.255.255\n")
+```
+
+to the `bassic.py` script and configure a second loopback interface.
 
 
 ## S1 configuration
