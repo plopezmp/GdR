@@ -120,6 +120,12 @@ Regular Python 3 strings are multi-byte character strings without an explicit en
 root@NetworkAutomation-1:~#python3 basicR1.py
 ```
 
+After that, we could check that the `l0` interface has been configured. In the R1 console:
+
+```
+R1#sh ip int brief
+```
+
 
 **Note:** Python language does not use separations such us curly braquets, instead it uses **identation**.
 
