@@ -30,6 +30,7 @@ The network interfaces are configured as follows:
 2. Start the node (*Play*)
 3. Make a PING to Internet (e.g., 8.8.8.8)
 
+Now start the two nodes, multilayer switch S1 and the router R1.
 
 ## R1 configuration
 1. Open a console at R1 and set an IP address like follows
