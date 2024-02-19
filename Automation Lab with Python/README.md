@@ -262,6 +262,6 @@ with open("data.cfg") as file:
 
     ips = [ip.strip() for ip in lines[:-2]]
 ```
-Take a look and test the scrip `scrALL.py` and test it. This file can be extended to configure different devices, only caveat is how to tell what set of commands to use with each IP.
+Take a look and test the scrip `scrALL.py` and test it. This file can be extended to configure different devices, only caveat is how to tell what set of commands to use with each IP. Generalization can be done using a list of tuples [(IP,[commands]),...] or a Python dictionary {'IP':[],...}
 
 
