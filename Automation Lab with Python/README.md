@@ -252,5 +252,16 @@ cisco
 ```
 
 and the Python to read this file:
+```
+with open("data.cfg") as file:
+        lines = file.read().splitlines()
+
+    user = lines[-2].strip()  # Second-to-last line
+    password = lines[-1].strip()  # Last line
+
+
+    ips = [ip.strip() for ip in lines[:-2]]
+```
+Take a look and test the scrip `scrALL.py` and test it. This file can be extended to configure different devices, only caveat is how to tell what set of commands to use with each IP.
 
 
