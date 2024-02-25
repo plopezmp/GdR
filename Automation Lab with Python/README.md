@@ -75,6 +75,10 @@ Using the `telnetlib` library we can stablish a Telnet session with **R1**
 
 The network automation station has no WYSIWYG editor. We can use the `vi` or the `nano` Terminal editors to write the Python program.
 
+**Note:** The following examples must be run with **python3** (Python version 3). There are slight differences between version 2 and 3. 
+For example, `input` in v2 is `raw_input`, 
+and the **b** in `tn.write` indicates that the string should be treated as a sequence of bytes rather than a Unicode string.
+
 #### basic.py
 
 To make Telnet to R1 and configure interface `Loopback 0`, (l0).
