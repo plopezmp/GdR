@@ -77,7 +77,7 @@ The network automation station has no WYSIWYG editor. We can use the `vi` or the
 
 **Note:** The following examples must be run with **python3** (Python version 3). There are slight differences between version 2 and 3. 
 For example, `input` in v2 is `raw_input`, 
-and the **b** in `tn.write` indicates that the string should be treated as a sequence of bytes rather than a Unicode string.
+and, strings are already sequences of bytes, so there's no need to explicitly encode them. Hence, you don't see the **b** prefix before string literals in Python 2 when working with telnetlib. The folder *Py_v2* contains the Python 2 version of the scripts.
 
 #### basic.py
 
