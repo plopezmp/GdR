@@ -41,7 +41,7 @@ Now start the two nodes, multilayer switch S1 and the router R1.
 
 ```
 conf t
-hostanme R1 
+hostname R1 
 enable password cisco
 username plm password cisco
 
