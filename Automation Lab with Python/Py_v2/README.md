@@ -6,4 +6,4 @@
 
 > Therefore, the scripts has slight adjustements, such as the **b** prefix in the `tn.write` statements.
 
-> These example scripts also change the IPs used to adapt the default subnet of GESTION `172.16.0.100/24`
+> These example scripts also change the IPs used and adapt them to GESTION subnet: `172.16.0.100/24`
