@@ -1,6 +1,6 @@
 # Using GESTION Virtual Machine
 
-<img src='figs/RED2.jpg' width='760'>
+<img src='../figs/RED2.jpg' width='760'>
 
 GESTION or CentOS is the MV used in the Lab classes and it has Python 2.4.3 installed.
 
