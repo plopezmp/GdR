@@ -71,6 +71,7 @@ In the `paramiko_connection` section of the file add the following line:
 [paramiko_connection]
 host_key_auto_add = True
 ```
+To allow `paramiko` remember the keys of the list of *ssh* servers
 
 ## R1 router
 R1 is a Cisco 7200 (*c7200-adventerprisek9-mz.124-24.T5.image*)
