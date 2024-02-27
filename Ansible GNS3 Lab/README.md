@@ -56,8 +56,9 @@ We do not use DNS and the `hosts` file will allow us to PING each connected IP b
 
 #### The file `/etc/ssh/ssh_config`
 
-We get error if we try to ssh to R1: `ssh ansible@192.168.0.10`. The router uses key encription algorithm 
-Append at the end the following:
+We get error if we try to ssh to R1: `ssh ansible@192.168.0.10`. The router uses key encription algorithm.
+
+Append at the end of `/etc/ssh/ssh_config` the following line:
 
 ```
 KexAlgorithms=curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
