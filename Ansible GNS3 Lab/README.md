@@ -82,7 +82,7 @@ end
 wr
 
 conf t
-ip domain.name domain.local
+ip domain.name upct
 username ansible privilege 15 secret ansible
 
 line vty 0 15
@@ -129,7 +129,7 @@ end
 wr
 
 conf t
-ip domain-name domain.local
+ip domain-name upct
 username ansible privilege 15 secret ansible
 
 line vty 0 15
@@ -177,7 +177,7 @@ configure terminal
 
 
 conf t
-ip domain name domain.local
+ip domain name upct
 username ansible privilege 15 secret ansible
 
 line vty 0 15
