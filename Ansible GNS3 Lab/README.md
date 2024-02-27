@@ -55,6 +55,8 @@ The template configuration of the machine has to show 2 adapters, one pointing t
 We do not use DNS and the `hosts` file will allow us to PING each connected IP by using their `hostname`.
 
 #### The file `/etc/ssh/ssh_config`
+
+We get error if we try to ssh to R1: `ssh ansible@192.168.0.10`. The router uses key encription algorithm 
 Append at the end the following:
 
 ```
