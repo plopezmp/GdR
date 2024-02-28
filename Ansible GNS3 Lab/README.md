@@ -321,7 +321,7 @@ tasks:
 
 It uses the following format:
 ```
-ansible-playbook -i ansible_hosts int_g10R1.yml.yml
+ansible-playbook -i ansible_hosts int_g10R1.yml
 ```
 
 We pass the inventory file with the `-i` parameter and the playbook file.
