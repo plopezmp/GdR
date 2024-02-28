@@ -177,7 +177,7 @@ configure terminal
  ip routing
  interface g0/0
  no switchport
- ip address 192.168.0.12 255.255.255.0 S
+ ip address 192.168.0.12 255.255.255.0
  no shutdown
  end
 
