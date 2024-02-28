@@ -165,6 +165,7 @@ and answer 1024 to the two configuration questions that shows on.
 Also vIOS. We would configure it as a router.
 
 ```
+enable
 conf t
 hostname switchR3
 end
