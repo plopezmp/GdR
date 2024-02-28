@@ -91,6 +91,7 @@ username ansible privilege 15 secret ansible
 
 line vty 0 15
 login local
+transport input all
 exit
 
 enable secret cisco
