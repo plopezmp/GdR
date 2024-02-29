@@ -109,7 +109,7 @@ show ip ssh
 ```
 ssh activation:
 ```
-R1(config)#ssh time-out 60
+R1(config)#ip ssh time-out 60
 R1(config)#crypto key generate rsa usage-keys label router-key
 ```
 The CLI will ask for the size of the key.
