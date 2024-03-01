@@ -224,7 +224,7 @@ switchR3
 We are calling `ansible_hosts` to the inventory file.
 
 A playbook file contains the instructions to Ansible and the commands to run in the remote nodes.
-The instrucions follow the [YAML]([https://www.redhat.com/en/topics/automation/what-is-yaml](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)) format.
+The instrucions follow the [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) format.
 
 Playbook `int_g10R1.yml`:
 ```
