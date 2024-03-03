@@ -266,6 +266,6 @@ with open("data.cfg") as file:
 
     ips = [ip.strip() for ip in lines[:-2]]
 ```
-Take a look and test the scrip `scrALL.py` and test it. This file can be extended to configure different devices, only caveat is how to tell what set of commands to use with each IP. Generalization can be done using a list of tuples [(IP,[command1,command2,..]),...] or a Python dictionary {'IP':[command1,command2,..],...}. This way, makes `data.cfg` only useful to gather user and password.
+Take a look and test the scrip `scrALL.py` and test it. This file can be extended to configure different devices, only caveat is how to tell what set of commands to use with each IP. Generalization can be done using a list of tuples [(IP,[command1,command2,..]),...] or a Python dictionary {'IP':[command1,command2,..],...}. This way, makes `data.cfg` only useful to gather user and password. More generally, can be the use of a single JSON or YAML file to get credentials and configurations.
 
 
