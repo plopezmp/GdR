@@ -21,7 +21,7 @@
       ios_command:
         provider: "{{ provider }}"
         commands:
-          - show int | in line protocol|MTU
+          - show versioin | in uptime
       register: if_data
     - debug:
         var: if_data['stdout_lines'][0]
