@@ -327,4 +327,4 @@ ansible-playbook -i ansible_hosts int_g10R1.yml
 We pass the inventory file with the `-i` parameter and the playbook file.
 
 
-(The GNS3 project can be downloades from link: [https://bit.ly/3Th3z5N](https://bit.ly/3Th3z5N)
+(The GNS3 project can be downloaded from link: [https://bit.ly/3Th3z5N](https://bit.ly/3Th3z5N)
