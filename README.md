@@ -1,2 +1,5 @@
 # GdR
-GdR Lab Exercises for Net Automation
+
+Network Automation Intro:
+1. Configuration with Python
+2. Ansible
