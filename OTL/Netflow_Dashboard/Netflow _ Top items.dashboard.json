@@ -1,0 +1,429 @@
+{
+  "version": 3,
+  "dashboardId": "7209474029437059077",
+  "title": "Netflow / Top items",
+  "description": "",
+  "role": "",
+  "owner": "",
+  "created": "2024-06-20T09:23:27.148Z",
+  "tabs": [
+    {
+      "tabId": "default",
+      "name": "Default",
+      "panels": [
+        {
+          "id": "Panel_ID8027510",
+          "type": "table",
+          "title": "Top Sources",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            }
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT src_addr as \"x_axis_1\", count(bytes) as \"y_axis_2\"  FROM \"netflow1\"  GROUP BY x_axis_1 LIMIT 10",
+              "customQuery": false,
+              "fields": {
+                "stream": "netflow1",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Src Addr",
+                    "alias": "x_axis_1",
+                    "column": "src_addr",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Bytes",
+                    "alias": "y_axis_2",
+                    "column": "bytes",
+                    "color": "#c23531",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 10,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 12,
+            "y": 0,
+            "w": 12,
+            "h": 11,
+            "i": 2
+          }
+        },
+        {
+          "id": "Panel_ID3335710",
+          "type": "table",
+          "title": "Top Destinations",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            }
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT dst_addr as \"x_axis_1\", count(bytes) as \"y_axis_2\"  FROM \"netflow1\"  GROUP BY x_axis_1 LIMIT 10",
+              "customQuery": false,
+              "fields": {
+                "stream": "netflow1",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Dst Addr",
+                    "alias": "x_axis_1",
+                    "column": "dst_addr",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Bytes",
+                    "alias": "y_axis_2",
+                    "column": "bytes",
+                    "color": "#c23531",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 10,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 11,
+            "i": 3
+          }
+        },
+        {
+          "id": "Panel_ID1514710",
+          "type": "donut",
+          "title": "Top Sources",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": "right",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            }
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT src_addr as \"x_axis_1\", count(bytes) as \"y_axis_1\"  FROM \"netflow1\"  GROUP BY x_axis_1 LIMIT 10",
+              "customQuery": false,
+              "fields": {
+                "stream": "netflow1",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Src Addr",
+                    "alias": "x_axis_1",
+                    "column": "src_addr",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Bytes",
+                    "alias": "y_axis_1",
+                    "column": "bytes",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 10,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 24,
+            "y": 0,
+            "w": 24,
+            "h": 11,
+            "i": 4
+          }
+        },
+        {
+          "id": "Panel_ID4869510",
+          "type": "table",
+          "title": "Top sources by traffic volume",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            }
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT src_addr as \"x_axis_1\", sum(bytes) as \"y_axis_1\"  FROM \"netflow1\"  GROUP BY x_axis_1 LIMIT 10",
+              "customQuery": false,
+              "fields": {
+                "stream": "netflow1",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Src Addr",
+                    "alias": "x_axis_1",
+                    "column": "src_addr",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": " ",
+                    "alias": "y_axis_1",
+                    "column": "bytes",
+                    "color": "#5960b2",
+                    "aggregationFunction": "sum"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 10,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 11,
+            "w": 12,
+            "h": 10,
+            "i": 5
+          }
+        },
+        {
+          "id": "Panel_ID2428510",
+          "type": "table",
+          "title": "Top destinations by traffic volume",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            }
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT dst_addr as \"x_axis_1\", sum(bytes) as \"y_axis_2\"  FROM \"netflow1\"  GROUP BY x_axis_1 LIMIT 10",
+              "customQuery": false,
+              "fields": {
+                "stream": "netflow1",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Dst Addr",
+                    "alias": "x_axis_1",
+                    "column": "dst_addr",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": " ",
+                    "alias": "y_axis_2",
+                    "column": "bytes",
+                    "color": "#c23531",
+                    "aggregationFunction": "sum"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 10,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 12,
+            "y": 11,
+            "w": 12,
+            "h": 10,
+            "i": 6
+          }
+        },
+        {
+          "id": "Panel_ID239510",
+          "type": "pie",
+          "title": "Top protocols",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": "bottom",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            }
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT proto as \"x_axis_1\", count(packets) as \"y_axis_1\"  FROM \"netflow1\"  GROUP BY x_axis_1",
+              "customQuery": false,
+              "fields": {
+                "stream": "netflow1",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Proto",
+                    "alias": "x_axis_1",
+                    "column": "proto",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Packets",
+                    "alias": "y_axis_1",
+                    "column": "packets",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 24,
+            "y": 11,
+            "w": 24,
+            "h": 10,
+            "i": 7
+          }
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "list": [],
+    "showDynamicFilters": true
+  }
+}
