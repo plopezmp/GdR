@@ -44,7 +44,7 @@ The network interfaces are configured as follows:
 1. Open MV used in GdR labs
 2. Open GNS3 program
 3. Configure the above network. Note that the cloud node is the gateway to the localhost (a.k.a. MV Fedora)
-4. Now start the two nodes, multilayer switch S1 and the router R1. These nodes have _heavy_ IOS that can load considerably the CPU, at least at startup. Once started (afte ~3min) the CPU load should be lower.
+4. Now start the two nodes, multilayer switch S1 and the router R1. These nodes use _heavy_ IOS (IOSv) that can load considerably the CPU, at least at startup. Once started (afte ~3min) the CPU load should be lower.
 5. Open a `Console` in both nodes and _click_ the Enter key until you can see the prompt, `Router>` or `Switch>`
 
 
@@ -52,6 +52,7 @@ The network interfaces are configured as follows:
 1. Open a console at R1 and set an IP address like follows
 
 ```
+enable
 conf t
 hostname R1 
 enable password cisco
@@ -69,17 +70,19 @@ end
 write
 ```
 
-2. The line `transport input all` is required to be able to stablish Telnet and SSH connections. The user and password (`plm` and `cisco`) could be personalized.
-3. `R1#show ip int brief` 
-4. Now, is it possible to test the telnet connection to R1 from the localhost Terminal:
+2. The line `transport input all` is required to be able to stablish Telnet and SSH connections. The user and password (`plm` and `cisco`) can be personalized.
+3. `R1#show ip int brief`
+4. From the localhost Terminal do `lab@fedora:~$ ping 172.18.0.251`. 
+5. Now, is it possible to test the telnet connection to R1 from the localhost Terminal:
    ```
-   root@NetworkAutomation-1:~#telnet 172.18.0.251
+   lab@fedora:~$ telnet 172.18.0.251
    Username: plm
    password: 
    ```
    write `cisco` in the password.
    
    To enter in protected mode (`enable`) the password we have set is `cisco`.
+
 
 ## Basic Python script
 
