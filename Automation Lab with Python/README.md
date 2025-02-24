@@ -44,7 +44,7 @@ The network interfaces are configured as follows:
 1. Open MV used in GdR labs
 2. Open GNS3 program
 3. Configure the above network. Note that the cloud node is the gateway to the localhost (a.k.a. MV Fedora)
-4. Now start the two nodes, multilayer switch S1 and the router R1. Those nodes have heavy IOS that can load considerably the CPU, at least at startup. Once started the CPU load should be lower.
+4. Now start the two nodes, multilayer switch S1 and the router R1. These nodes have _heavy_ IOS that can load considerably the CPU, at least at startup. Once started the CPU load should be lower.
 
 
 ## R1 configuration
