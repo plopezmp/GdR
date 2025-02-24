@@ -57,7 +57,7 @@ enable password cisco
 username plm password cisco
 
 int g0/0
-ip add 192.168.122.251 255.255.255.0
+ip add 172.18.0.251 255.255.255.0
 no sh
 exit
 line vty 0 4
