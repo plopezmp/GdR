@@ -7,36 +7,6 @@ This lab goal is to use Python code to make basic configurations of network node
 <img src='figs/RED1.jpg' width='560'>
 -->
 
-<!---
-## Automation station
-Network Automation is a docker system with linux and Python installed. The GNS3 appliance is in [Network Automation link](https://gns3.com/marketplace/appliances/network-automation).
-
-
-The network interfaces are configured as follows:
-```
-#
-# This is a sample network config uncomment lines to configure the network
-#
-# Static config for eth0
-# auto eth0
-# iface eth0 inet static
-#	address 192.168.0.2
-#	netmask 255.255.255.0
-#	gateway 192.168.0.1
-#	up echo nameserver 192.168.0.1 > /etc/resolv.conf
-# DHCP config for eth0
- auto eth0
- iface eth0 inet dhcp
-```
-
-1. Copy this lines with the Automation station stopped.
-2. Start the node (*Play*). It will catch an IP from the localhost via DHCP
-   
-   **Note:** this IP is important because we will configure R1 in the same subnet
-4. Make a PING to Internet (e.g., 8.8.8.8)
-5. Make `apt-get update` to update references in Ubuntu
-6. Install Python: `apt-get install python` (if prompted say 'yes' or `Y`')
--->
 
 ## GNS3 topology
 <img src='figs/RED1.jpg' width='560'>
@@ -88,22 +58,37 @@ write
 
 Using the `telnetlib` library we can stablish a Telnet session with **R1**
 
-The network automation station has no WYSIWYG editor. We can use the `vi` or the `nano` Terminal editors to write the Python program.
+Fedora localhost has the `gedit` editor (Applications>Accessories>gedit). We can use the `vim` or the `nano` editors that run in the Terminal to write the Python program.
 
-**Note:** The following examples must be run with **python3** (Python version 3). There are slight differences between version 2 and 3. 
+**Note:** The following examples must be run with **python3** (Python version 3) which is the default version in your system.  There are slight differences between version 2 and 3. 
 For example, `input` in v2 is `raw_input`, 
 and, strings are already sequences of bytes, so there's no need to explicitly encode them. Hence, you don't see the **b** prefix before string literals in Python 2 when working with telnetlib. The folder *Py_v2* contains the Python 2 version of the scripts.
+
+To develop Python code it is recommended to create a separated Python environment. We have already one that can be used in this lab. To enter the environment do
+
+```
+lab@fedora:~$ workon gns3
+```
+the prompt changes to `(gns3) lab@fedora:~$` which indicates we are using the Python environment named `gns3`. All packages that we could install or use coding Python will remain in this environment and will not affect the Global Python environment. 
+
+Also, it is advisable to create a new folder (e.g. named _py_scripts
+_) in the localhost to save the scripts.
+
+
 
 #### basic.py
 
 To make Telnet to R1 and configure interface `Loopback 0`, (l0).
 
 ```
+#!/home/lab/.virtualenvs/gns3/bin/python -W ignore
+
 # basicR1.py
 import getpass
 import telnetlib
 
-HOST = "192.168.122.251"
+
+HOST = "172.18.0.251"
 user = input("Enter your telnet username:")
 password = getpass.getpass()
 
@@ -128,13 +113,20 @@ tn.write(b"write\n")
 
 print(tn.read_all().decode('ascii'))
 ```
+Python is an intepreted language which means it does not require an explicit compilation like with C or C++. 
+
+**Note:** Python does nos use curly braces to enclose loop lines or conditional statements, instead uses **identation**, _i.e._ some space to start the code in the statement, like in 
+```
+if password:
+    tn.read_until(b"Password: ")
+    tn.write(password.encode('ascii') + b"\n")
+```
 
 The `telnetlib` documentation is very explicit about wanting "byte strings"; thats is why the string must be encoded (the `b` letter in the script. 
 <!---
 Regular Python 3 strings are multi-byte character strings without an explicit encoding attached; to make byte strings of them means either rendering them down, or generating them as pre-rendered bytestring literals.
 -->
 
-**Note:** Python language does not use separations such us curly braquets, instead it uses **identation**.
 
 **Running the R1 script:**
 ```
