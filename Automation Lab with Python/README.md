@@ -44,7 +44,8 @@ The network interfaces are configured as follows:
 1. Open MV used in GdR labs
 2. Open GNS3 program
 3. Configure the above network. Note that the cloud node is the gateway to the localhost (a.k.a. MV Fedora)
-4. Now start the two nodes, multilayer switch S1 and the router R1. These nodes have _heavy_ IOS that can load considerably the CPU, at least at startup. Once started the CPU load should be lower.
+4. Now start the two nodes, multilayer switch S1 and the router R1. These nodes have _heavy_ IOS that can load considerably the CPU, at least at startup. Once started (afte ~3min) the CPU load should be lower.
+5. Open a `Console` in both nodes and _click_ the Enter key until you can see the prompt, `Router>` or `Switch>`
 
 
 ## R1 configuration
@@ -70,9 +71,9 @@ write
 
 2. The line `transport input all` is required to be able to stablish Telnet and SSH connections. The user and password (`plm` and `cisco`) could be personalized.
 3. `R1#show ip int brief` 
-4. Now, is it possible to test the telnet connection to R1 from the automation station Terminal:
+4. Now, is it possible to test the telnet connection to R1 from the localhost Terminal:
    ```
-   root@NetworkAutomation-1:~#telnet 192.168.122.251
+   root@NetworkAutomation-1:~#telnet 172.18.0.251
    Username: plm
    password: 
    ```
