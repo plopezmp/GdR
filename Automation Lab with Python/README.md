@@ -1,13 +1,16 @@
 # Intro to Network Automation with Python
-This lab aims to use Python programs to make a basic configuration of network nodes. The [telnetlib](https://docs.python.org/3/library/telnetlib.html) library serves to open a Telnet session and send configuration commands to the remote node.
+This lab goal is to use Python code to make basic configurations of network nodes. The [telnetlib](https://docs.python.org/3/library/telnetlib.html) library serves to open a Telnet session and send configuration commands to remote nodes.
 
 <!---
 ![Alt text](RED1.png)
--->
-<img src='figs/RED1.jpg' width='560'>
 
+<img src='figs/RED1.jpg' width='560'>
+-->
+
+<!---
 ## Automation station
 Network Automation is a docker system with linux and Python installed. The GNS3 appliance is in [Network Automation link](https://gns3.com/marketplace/appliances/network-automation).
+
 
 The network interfaces are configured as follows:
 ```
@@ -15,8 +18,8 @@ The network interfaces are configured as follows:
 # This is a sample network config uncomment lines to configure the network
 #
 # Static config for eth0
-#auto eth0
-#iface eth0 inet static
+# auto eth0
+# iface eth0 inet static
 #	address 192.168.0.2
 #	netmask 255.255.255.0
 #	gateway 192.168.0.1
@@ -33,8 +36,14 @@ The network interfaces are configured as follows:
 4. Make a PING to Internet (e.g., 8.8.8.8)
 5. Make `apt-get update` to update references in Ubuntu
 6. Install Python: `apt-get install python` (if prompted say 'yes' or `Y`')
+-->
 
-Now start the two nodes, multilayer switch S1 and the router R1.
+## GNS3 topology
+1. Open MV used in GdR labs
+2. Open GNS3 program
+3. Configure the following network. Note that the cloud node is the gateway to the localhost (a.k.a. MV Fedora)
+4. Now start the two nodes, multilayer switch S1 and the router R1. Those nodes have heavy IOS that can load considerably the CPU, at least at startup. Once started the CPU load should be lower.
+
 
 ## R1 configuration
 1. Open a console at R1 and set an IP address like follows
