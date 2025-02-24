@@ -270,7 +270,7 @@ Uncomment the lines with `#` to configure more than one vlan.
 * Test these scripts to configure multiple Loopback interfaces in R1, and vlans in S1.
 
   Note that the Python environment is already set in the first line of these scripts and there is no need to call `python3` if they are set
-  executables (`chamod +x`).
+  executables (`chmod +x`).
   
 
 **Finally**, is it possible to create a file with common data required in a script, then read it into the Python script and load these data in variables declared in te code. 
