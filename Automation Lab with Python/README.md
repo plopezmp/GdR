@@ -173,7 +173,7 @@ S1 is an IOSv Cisco switch that can be configured remotely with SSH or Telnet.
 enable
 conf t
 int vlan 1
-ip add 192.168.122.250 255.255.255.0
+ip add 172.18.0.250 255.255.255.0
 no sh
 exit
 
@@ -190,10 +190,11 @@ write
 ```
 
 2. Test the network with a PING from the Network Automation station:
-   `ping 192.168.122.250`
+   `ping 172.18.0.250`
 3. Make a Telnet:
-   `telnet 192.168.122.250`
-4. Run some CLI commands:
+   `telnet 172.18.0
+   .250`
+5. Run some CLI commands:
    ```
    sh vlan brief
    sh ip int brief
@@ -209,11 +210,12 @@ which must show only the `vlan 1` configured before in the CLI.
 2. Using any Terminal editor create the `basicS1.py` script:
    
 ```
+#!/home/lab/.virtualenvs/gns3/bin/python -W ignore
 # Basic S1 script
 import getpass
 import telnetlib
 
-HOST = "192.168.122.250"
+HOST = "172.18.0.250"
 user = input("Enter your telnet username: ")
 password = getpass.getpass()
 
@@ -252,8 +254,13 @@ Uncomment the lines with `#` to configure more than one vlan.
 3. Make `sh vlan` in the S1 console to check the vlan 2 is configured
 
 **Running the S1 script:**
+1. Make the script executable
+   ```
+   (gns3) lab@fedora:~/py_scripts$ chmod +x basicS1.py
+   ```
+2. Run the script
 ```
-root@NetworkAutomation-1:~#python3 basicS1.py
+(gns3) lab@fedora:~/py_scripts$ ./basicS1.py 
 ```
 
 
@@ -266,11 +273,12 @@ root@NetworkAutomation-1:~#python3 basicS1.py
   executables (`chamod +x`).
   
 
-**Finally**, is it possible to create a file with common data required in a script, then read it into the Python script and load these data in variables used. For example, the file `data.cfg` has the two IPs of the nodes we want to configure, and two lines with the user and password. 
+**Finally**, is it possible to create a file with common data required in a script, then read it into the Python script and load these data in variables declared in te code. 
+For example, the file `data.cfg` has the two IPs of the nodes we want to configure, and two lines with the user and password. 
 
 ```
-192.168.122.250
-192.168.122.251
+172.18.0.250
+172.18.0.251
 plm
 cisco
 ```
@@ -286,5 +294,8 @@ with open("data.cfg") as file:
 
     ips = [ip.strip() for ip in lines[:-2]]
 ```
-Take a look and test the scrip `scrALL.py` and test it. This file can be extended to configure different devices, only caveat is how to tell what set of commands to use with each IP. Generalization can be done using a list of tuples [(IP,[command1,command2,..]),...] or a Python dictionary {'IP':[command1,command2,..],...}. This way, makes `data.cfg` only useful to gather user and password. More generally, can be the use of a single JSON or YAML file to get credentials and configurations.
+Take a look and test the scrip `scrALL.py` and test it. This file can be extended to configure different devices. 
+The only caveat is how to tell what set of commands to use with each IP. 
+Generalization can be done using a list of tuples [(IP,[command1,command2,..]),...] or using Python dictionary {'IP':[command1,command2,..],...}. 
+This way, makes `data.cfg` only useful to gather user and password. More generally, can be the use of a single JSON or YAML file to get credentials and configurations.
 
