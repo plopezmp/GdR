@@ -115,12 +115,14 @@ print(tn.read_all().decode('ascii'))
 ```
 Python is an intepreted language which means it does not require an explicit compilation like with C or C++. 
 
-**Note:** Python does nos use curly braces to enclose loop lines or conditional statements, instead uses **identation**, _i.e._ some space to start the code in the statement, like in 
+**Note:** 
+* Python does nos use curly braces to enclose loop lines or conditional statements, instead uses **identation**, _i.e._ some space to start the code in the statement, like in 
 ```
 if password:
     tn.read_until(b"Password: ")
     tn.write(password.encode('ascii') + b"\n")
 ```
+* The line starting with `#!` is to indicate the Python interpreter location.
 
 The `telnetlib` documentation is very explicit about wanting "byte strings"; thats is why the string must be encoded (the `b` letter in the script. 
 <!---
@@ -129,8 +131,13 @@ Regular Python 3 strings are multi-byte character strings without an explicit en
 
 
 **Running the R1 script:**
+1. Make the script executable
+   ```
+   (gns3) lab@fedora:~/py_scripts$ chmod +x basicR1.py
+   ```
+2. Run the script
 ```
-root@NetworkAutomation-1:~#python3 basicR1.py
+(gns3) lab@fedora:~/py_scripts$ ./basicR1.py 
 ```
 
 After that, we could check that the `l0` interface has been configured. In the R1 console:
