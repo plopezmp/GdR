@@ -155,5 +155,136 @@ tn.write(b"router ospf 1\n")
 tn.write(b"network 0.0.0.0 255.255.255.255 area0\n")
 ```
 
-to the `bassicR1.py` script and configure a second loopback interface, and OSPF, like 
+to the `basicR1.py` script and configure a second loopback interface, and OSPF, like 
 we have in the script `scr1.py` that will be tested later.
+
+
+
+
+
+
+
+
+## S1 configuration
+S1 is an IOSv Cisco switch that can be configured remotely with SSH or Telnet.
+1. Open a console to S1 and make a basic IP configuration.
+
+```
+enable
+conf t
+int vlan 1
+ip add 192.168.122.250 255.255.255.0
+no sh
+exit
+
+host S1
+enable password cisco
+username plm password cisco
+
+line vty 0 4
+login local
+transport input all
+end
+
+write
+```
+
+2. Test the network with a PING from the Network Automation station:
+   `ping 192.168.122.250`
+3. Make a Telnet:
+   `telnet 192.168.122.250`
+4. Run some CLI commands:
+   ```
+   sh vlan brief
+   sh ip int brief
+   ```
+
+
+#### Basic S1 script
+
+1. In the S1 console, run  `show vlan`
+
+which must show only the `vlan 1` configured before in the CLI.
+
+2. Using any Terminal editor create the `basicS1.py` script:
+   
+```
+# Basic S1 script
+import getpass
+import telnetlib
+
+HOST = "192.168.122.250"
+user = input("Enter your telnet username: ")
+password = getpass.getpass()
+
+tn = telnetlib.Telnet(HOST)
+
+tn.read_until(b"Username: ")
+tn.write(user.encode('ascii') + b"\n")
+if password:
+    tn.read_until(b"Password: ")
+    tn.write(password.encode('ascii') + b"\n")
+
+tn.write(b"enable\n")
+tn.write(b"cisco\n")
+
+tn.write(b"conf t\n")
+tn.write(b"vlan 2\n")
+tn.write(b"name Python_vlan_2\n")
+# tn.write(b"vlan 3\n")
+# tn.write(b"name Python_vlan_3\n")
+# tn.write(b"vlan 4\n")
+# tn.write(b"name Python_vlan_4\n")
+# tn.write(b"vlan 5\n")
+# tn.write(b"name Python_vlan_5\n")
+# tn.write(b"vlan 6\n")
+# tn.write(b"name Python_vlan_6\n")
+tn.write(b"exit\n")
+tn.write(b"end\n")
+tn.write(b"exit\n")
+tn.write(b"write\n")
+
+print(tn.read_all().decode('ascii'))
+```
+
+Uncomment the lines with `#` to configure more than one vlan.
+
+3. Make `sh vlan` in the S1 console to check the vlan 2 is configured
+
+**Running the S1 script:**
+```
+root@NetworkAutomation-1:~#python3 basicS1.py
+```
+
+
+**The power of Python programming to configure a network comes clear when repeated instructions can be coded with loops.**
+
+* Review the code in the Python scripts: `scr1.py` and `scr2.py`.
+* Test these scripts to configure multiple Loopback interfaces in R1, and vlans in S1.
+
+  Note that the Python environment is already set in the first line of these scripts and there is no need to call `python3` if they are set
+  executables (`chamod +x`).
+  
+
+**Finally**, is it possible to create a file with common data required in a script, then read it into the Python script and load these data in variables used. For example, the file `data.cfg` has the two IPs of the nodes we want to configure, and two lines with the user and password. 
+
+```
+192.168.122.250
+192.168.122.251
+plm
+cisco
+```
+
+and the Python to read this file:
+```
+with open("data.cfg") as file:
+        lines = file.read().splitlines()
+
+    user = lines[-2].strip()  # Second-to-last line
+    password = lines[-1].strip()  # Last line
+
+
+    ips = [ip.strip() for ip in lines[:-2]]
+```
+Take a look and test the scrip `scrALL.py` and test it. This file can be extended to configure different devices, only caveat is how to tell what set of commands to use with each IP. Generalization can be done using a list of tuples [(IP,[command1,command2,..]),...] or a Python dictionary {'IP':[command1,command2,..],...}. This way, makes `data.cfg` only useful to gather user and password. More generally, can be the use of a single JSON or YAML file to get credentials and configurations.
+
