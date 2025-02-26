@@ -76,7 +76,7 @@ _) in the localhost to save the scripts.
 
 
 
-#### basic.py
+#### basicR1.py
 
 To make Telnet to R1 and configure interface `Loopback 0`, (l0).
 
