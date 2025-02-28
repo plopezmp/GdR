@@ -71,8 +71,7 @@ lab@fedora:~$ workon gns3
 ```
 the prompt changes to `(gns3) lab@fedora:~$` which indicates we are using the Python environment named `gns3`. All packages that we could install or use coding Python will remain in this environment and will not affect the Global Python environment. 
 
-Also, it is advisable to create a new folder (e.g. named _py_scripts
-_) in the localhost to save the scripts.
+Also, it is advisable to create a new folder (e.g. named _py_scripts_) in the localhost to save the scripts.
 
 
 
