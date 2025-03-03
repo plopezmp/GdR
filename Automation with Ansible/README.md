@@ -33,6 +33,32 @@ Must be like this:
           },
 ```
 
+* `~.ssh/config` must be
+  ```
+  Host *
+    HostKeyAlgorithms = +ssh-rsa
+   # PubkeyAcceptedAlgorithms=+ssh-rsa
+   # KexAlgorithms=+diffie-hellman-group-exchange-sha1
+  ```
+
+* `/etc/ssh/ssh_config.d/misshcfg.conf`
+  ```
+  KexAlgorithms=curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-   hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+
+  Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+  ```
+
+* `etc/ansible/ansible.cfg`
+  ```
+  [paramiko_connection]
+  host_key_auto_add = True
+  ```
+
+* To make cryptography coding _less demanding_
+  ```
+  sudo update-crypto-policies --set LEGACY
+  reboot
+  ``` 
 
 
 
