@@ -7,8 +7,7 @@ The tool includes a large set of modules that support tasks such as managing clo
 
 Ansible is primarily written in Python. The core engine and most of its modules are developed in Python, making it lightweight and easily extensible. Additionally, Ansible relies on Python libraries such as paramiko for SSH connections and Jinja2 for templating.
 
-### Some files used in Fedora configuration
-afadfadfadf
+### Installation notes on Fedora MV
 
 We have created a Python environment to work with Ansible in the Fedora MV of this course. To access this environment just run 
 ```
@@ -16,7 +15,7 @@ workon ansible
 ```
 To leave the environment use `deactivate`. 
 
-Ansible is already installed in this environment the `pip` package manager (e.g. check the list of installed packages with `pip freeze`)
+Ansible is already installed in this environment the `pip` package manager (e.g. check the list of installed packages with `pip freeze`). Besides `ansible`, there are some packages installed needed to make _ssh_ connections with the nodes, and to run the examples contained in this repository. For example, `paramiko` and `ansible-pylibssh`.
 
 
 
