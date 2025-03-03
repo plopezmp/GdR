@@ -17,10 +17,29 @@ To leave the environment use `deactivate`.
 
 Ansible is already installed in this environment the `pip` package manager (e.g. check the list of installed packages with `pip freeze`). Besides `ansible`, there are some packages installed needed to make _ssh_ connections with the nodes, and to run the examples contained in this repository. For example, `paramiko` and `ansible-pylibssh`.
 
+#### Files to review
+* _Paramiko->pkey.py_
+```
+/home/lab/.virtualenvs/ansible/lib/python3.12/site-packages/paramiko/pkey.py
+```
+In `CYPHER_TABLE = {...` modification of DES part removing the string `algorithms.`. 
+Must be like this:
+```
+"DES-EDE3-CBC": {
+            "cipher": TripleDES,
+            "keysize": 24,
+            "blocksize": 8,
+            "mode": modes.CBC,
+          },
+```
 
 
 
-### Example of use with GNS3
+
+
+
+
+### Examples of use
 The topology we are using is as follows
 
 <img src='figs/MIREDans.jpg' width='470'>
