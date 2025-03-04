@@ -74,6 +74,138 @@ The topology we are using is the following,
 R1 is a Cisco 7200 (*c7200-adventerprisek9-mz.124-24.T5.image*)
 
 Configuration through CLI:
+```
+conf t
+hostname R1
+int gi0/0
+ip add 172.18.0.20 255.255.255.0
+no sh
+end
+wr
+
+conf t
+ip domain-name upct
+username ansible privilege 15 secret ansible
+
+line vty 0 15
+login local
+transport input all
+exit
+
+enable secret cisco
+line console 0
+passw cisco
+login 
+exit
+
+end
+write memory
+```
+
+Check if `ssh` will works:
+```
+show ip ssh
+```
+ssh activation:
+```
+R1(config)#ip ssh time-out 60
+R1(config)#crypto key generate rsa usage-keys label router-key
+```
+The CLI will ask for the size of the key.
+The key should have `1024 bits`. Thus, we answer both questions with `1024`.
+
+#### Connection to R1
+1. Check R1 is reachable from Ansible host, e.g., PING to `172.18.0.20`.
+2. Then make the `ssh` connection: `ssh ansible@172.18.0.20`
+3. To close the connection  run `exit`.
+
+That should open an ssh connection to R1. If not, take a second look to the steps above. Also, can the following could be tested: `ssh -oHostKeyAlgorithms=ssh-rsa ansible@172.18.0.20`.
+
+
+### R2V router
+This a vIOS router. The configuration is as follows:
+
+```
+conf t
+hostname R2V
+int gi0/0
+ip add 172.18.0.21 255.255.255.0
+no sh
+end
+wr
+
+conf t
+ip domain-name upct
+username ansible privilege 15 secret ansible
+
+line vty 0 15
+login local
+transport input all
+exit
+
+enable secret cisco
+line console 0
+passw cisco
+login 
+exit
+
+end
+write memory
+```
+
+Besides, we must set the keys in the router:
+```
+R2V(config)#ip ssh time-out 60
+
+R2V(config)#crypto key generate rsa usage-keys label router-key
+```
+and answer 1024 to the two configuration questions that shows on.
+
+
+### switchR3 multilayer (L2/L3) switch
+Also vIOS. We would configure it as a router.
+
+```
+enable
+conf t
+hostname switchR3
+end
+sh int desc
+
+configure terminal
+ ip routing
+ interface g0/0
+ no switchport
+ ip address 172.18.0.22 255.255.255.0
+ no shutdown
+ end
+
+conf t
+ip domain name upct
+username ansible privilege 15 secret ansible
+
+line vty 0 15
+login local
+transport input all
+exit
+
+enable secret cisco
+line console 0
+passw cisco
+login 
+exit
+
+end
+write memory
+```
+
+Besides, we must set the keys:
+```
+switchR3(config)#ip ssh time-out 60
+
+switchR3(config)#crypto key generate rsa usage-keys label router-key
+```
+and answer 1024 to the two configuration questions that shows on.
 
 
 
