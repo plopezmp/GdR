@@ -273,7 +273,7 @@ Ansible will not prompt for confirmation when connecting to a new host via SSH. 
 
 
 ### Playbook file
-Ansible is **declarative** which means we just tell what we want and not how to make it. The Playbook file has a structure of three parts:
+Ansible is **declarative** which means we just tell what we want and not how to make it. The Playbook file has a structure of three mandatory parts:
 1. **Header: YAML Document Declaration**
 
    `---`
@@ -308,9 +308,9 @@ Ansible is **declarative** which means we just tell what we want and not how to 
        module_name:
          module_parameters
    ```
-
-
-
+   * `name`: A description of what the task does (optional but helpful for readability).
+   * `module_name`: The Ansible module being used (e.g., yum, ios_command, file, copy).
+   * `module_parameters`: The parameters passed to the module (like the package name, configuration settings, etc.).
 
 
 #### Optional parts
@@ -319,6 +319,58 @@ There are other **optional** parts in the playbook, such as
 * **vars:** Variables can be defined to make the playbook more flexible and reusable. Variables can be defined in several places: directly in the playbook, in separate variable files, or passed at runtime.
 * **defaults:** A defaults section can be used to define default variables that can be overridden.
 * **include:** If there are a large number of tasks or configurations, is it possible to split them into separate files and include them within a playbook.
+
+#### Identation
+Indentation is extremely important in YAML files, including Ansible playbooks. YAML uses indentation to define the structure and hierarchy of the data, so the correct indentation is critical to ensure that the file is parsed and executed correctly.
+
+* Indentation defines structure
+* Use **spaces, no tabs**
+* Incorrect identation causes errors
+* **Consistency**: identation with the same number of spaces (e.g. 2 spaces) 
+
+### Example of playbook: `configure_router.yml`
+
+#### Header and Play
+```
+---
+- name: Configure interface g1/0 on the router
+  hosts: R1
+  gather_facts: no
+  connection: network_cli
+  tasks:
+```
+* `name:` This is the description of the playbook. It explains the purpose of the playbook.
+* `hosts:` Specifies the target hosts to which the playbook will be applied. Here, the playbook will target the host named R1, which is defined in the Ansible inventory.
+* `gather_facts:` When set to no, Ansible will not collect system facts (like OS version, memory, etc.). This can speed up the execution of the playbook when we don't need this information.
+* `connection:` Defines the connection type to the target devices. In this case, it uses `network_cli`, which is suitable for network devices like routers, switches, and firewalls. It indicates that Ansible will use CLI commands for configuration.
+
+#### Tasks
+**First Task:** Configure Interface
+```
+    - name: Configure interface g1/0
+      ios_command:
+        commands:
+          - configure terminal
+          - interface GigabitEthernet1/0
+          - ip address 192.168.2.10 255.255.255.0
+          - no shutdown
+          - end
+          - wr
+      register: output
+```
+* `name:` This is a description of the task. This task will configure the `GigabitEthernet1/0` interface on the router.
+* `ios_command: This module is specifically used for running commands on Cisco IOS devices (routers and switches). It allows you to send configuration commands to the router.
+* `register: output`  stores the result of the command execution (including the output) into a variable named `output`. This will be used in a later task to display the output.
+
+**Second Task:** Display Command Output
+```
+    - name: Display command output
+      debug:
+        var: output.stdout_lines
+```
+
+* `debug:` The debug module is used to print information to the terminal. Here, it’s used to display the contents of the output.stdout_lines variable.
+   - `var: output.stdout_lines` This specifies the output from the previous task. The `stdout_lines` attribute contains the output from the commands in a list format. This will display the commands' responses from the router.
 
 
 
