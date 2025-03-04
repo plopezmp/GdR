@@ -223,6 +223,44 @@ switchR3(config)#crypto key generate rsa usage-keys label router-key
 and answer 1024 to the two configuration questions that shows on.
 
 
+## Ansible inventory file
+Before running Ansible on the network devices, we need to set up the environment properly.
+
+Two main files are required:
+* **inventory** file
+* **playbook** file
+
+### Inventory file
+The inventory file contains relevant information about each node in the network.
+
+```
+[Routers]
+R1 ansible_host=172.18.0.20
+R2V ansible_host=172.18.0.21
+
+[Switches]
+switchR3 ansible_host=172.18.0.22
+
+[all:vars]
+ansible_network_os=ios
+ansible_user=ansible
+ansible_password=ansible
+ansible_ssh_pass=ansible
+ansible_become=true
+ansible_become_method=enable
+ansible_become_password=cisco
+```
+The **group names** (_e.g._, `Routers`) allow you to target specific sets of devices when running commands.
+
+The filename of the inventory file is configurable. For example, we can name it `hosts`. It is important to save this file in the same directory as the playbook .yml files.
+
+The `all:vars` group in the Ansible inventory file is used to define global variables that apply to all devices listed in the inventory.
+
+* Centralized authentication: The `ansible_user`, `ansible_password`, and `ansible_ssh_pass` variables ensure that all devices use the same SSH credentials.
+* Network automation settings:
+  - `ansible_network_os=ios` tells Ansible that the devices use Cisco IOS, so it applies the correct network modules.
+  - `ansible_become=true` and `ansible_become_method=enable` allow privilege escalation, needed for executing commands that require administrative rights.
+  - `ansible_become_password=cisco` provides the password for privilege escalation (equivalent to entering `enable` mode in Cisco CLI).
 
 
 ## Examples of use
