@@ -114,6 +114,18 @@ R1(config)#crypto key generate rsa usage-keys label router-key
 The CLI will ask for the size of the key.
 The key should have `1024 bits`. Thus, we answer both questions with `1024`.
 
+#### Notes on the CLI configuration
+* `ip domain name upct` typically required for features like SSH key generation and authentication.
+* `username ansible privilege 15 secret ansible`:
+   - user/password _ansible/ansible_.
+   - `privilege 15` gives the user **full administrative** access (equivalent to enable mode). 
+* `line vty 0 15`: Configures all 16 virtual terminal lines (VTY 0-15), which are used for remote access via Telnet or SSH.
+* `login local`: Requires a local user account (like ansible) for authentication.
+* `transport input all`: Allows all remote access protocols (SSH, Telnet, etc.).
+* `enable secret cisco`: This password is used to enter privileged EXEC mode (enable mode).
+
+These are standard CLI lines needed for SSH connections and are also used in R2V and switchR3 configuration as it is shown below.
+
 #### Connection to R1
 1. Check R1 is reachable from Ansible host, e.g., PING to `172.18.0.20`.
 2. Then make the `ssh` connection: `ssh ansible@172.18.0.20`
