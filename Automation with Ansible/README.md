@@ -281,7 +281,7 @@ Ansible is **declarative** which means we just tell what we want and not how to 
    This is the YAML document indicator that marks the beginning of the playbook.
 
 2. **Play**
-   A play defines a set of tasks to be executed on specified hosts. A play is marked with -, indicating the start of a new play. Every playbook usually contains one or more plays.
+   A play defines a set of tasks to be executed on specified hosts. A play is marked with `-`, indicating the start of a new play. Every playbook usually contains one or more plays.
 
    Each play has the following structure:
    ```
@@ -306,7 +306,7 @@ Ansible is **declarative** which means we just tell what we want and not how to 
    tasks:
      - name: Task description
        module_name:
-       module_parameters
+         module_parameters
    ```
 
 
