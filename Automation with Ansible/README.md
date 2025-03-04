@@ -230,6 +230,8 @@ Two main files are required:
 * **inventory** file
 * **playbook** file
 
+It is advisable to save these files in the same directory, _e.g._ `Ansible_projects`, similar to the one in the Fedora MV.
+
 ### Inventory file
 The inventory file contains relevant information about each node in the network.
 
