@@ -272,6 +272,55 @@ host_key_checking = False
 Ansible will not prompt for confirmation when connecting to a new host via SSH. Without this setting, Ansible would require user confirmation the first time it connects to a device, which could disrupt automated workflows.
 
 
+### Playbook file
+Ansible is **declarative** which means we just tell what we want and not how to make it. The Playbook file has a structure of three parts:
+1. **Header: YAML Document Declaration**
+
+   `---`
+   
+   This is the YAML document indicator that marks the beginning of the playbook.
+
+2. **Play**
+   A play defines a set of tasks to be executed on specified hosts. A play is marked with -, indicating the start of a new play. Every playbook usually contains one or more plays.
+
+   Each play has the following structure:
+   ```
+   - name: Play name (optional but recommended)
+     hosts: target hosts (e.g., 'all', 'web_servers', 'localhost')
+     gather_facts: yes/no (optional, default is 'yes')
+     connection: (optional, default is 'ssh')
+     tasks:
+       # List of tasks to run
+   ```
+   **Key Fields:**
+   * `name`: Descriptive name of the play (optional but recommended).
+   * `hosts`: Defines the target machines or groups of machines (from your inventory).
+   * `gather_facts`: Determines whether to gather system facts before executing tasks (default is yes).
+   * `connection`: Defines the connection type to use (e.g., ssh, network_cli).
+   * `become`: Indicates whether to escalate privileges (e.g., using sudo).
+
+3. **Tasks**
+   A task represents a unit of work to be performed. Each task is **associated with a specific Ansible module** that is responsible for performing an action (like configuring a device, installing a package, etc.).
+   
+   ```
+   tasks:
+     - name: Task description
+       module_name:
+       module_parameters
+   ```
+
+
+
+
+
+#### Optional parts
+There are other **optional** parts in the playbook, such as 
+* **handlers:** part, which are special tasks that only run when notified by other tasks. They are typically used for tasks that need to be run only when something changes (e.g., restarting a service after a configuration change).
+* **vars:** Variables can be defined to make the playbook more flexible and reusable. Variables can be defined in several places: directly in the playbook, in separate variable files, or passed at runtime.
+* **defaults:** A defaults section can be used to define default variables that can be overridden.
+* **include:** If there are a large number of tasks or configurations, is it possible to split them into separate files and include them within a playbook.
+
+
 
 ## Examples of use
 To test Ansible open a Terminal and run some of these playbooks:
