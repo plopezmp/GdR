@@ -1,0 +1,16 @@
+---
+- name: Run command on both routers
+  hosts: Routers, Switches
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Run 'show the system uptime' on both routers and the switch
+      ios_command:
+        commands:
+          - show version | in uptime
+      register: output
+
+    - name: Display command output
+      debug:
+        var: output.stdout_lines
+
