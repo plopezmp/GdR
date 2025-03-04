@@ -127,9 +127,9 @@ The key should have `1024 bits`. Thus, we answer both questions with `1024`.
 * `transport input all`: Allows all remote access protocols (SSH, Telnet, etc.).
 * `enable secret cisco`: This password is used to enter privileged EXEC mode (enable mode).
 
-These are standard CLI lines needed for SSH connections and are also used in R2V and switchR3 configuration as it is shown below.
+These CLI commands are essential for enabling SSH access and are also used for the **R2V** and **switchR3** configuration, as shown below.
 
-#### Connection to R1
+#### Connecting to R1
 1. Ensure R1 is reachable from the Ansible host by **pinging** `172.18.0.20`.
 2. Establish an SSH connection with: `ssh ansible@172.18.0.20`
 3. To close the connection, type `exit`.
