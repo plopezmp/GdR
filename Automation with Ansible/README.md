@@ -9,19 +9,19 @@ Ansible is primarily written in Python. The core engine and most of its modules 
 
 ## Installation notes on Fedora MV
 
-We have created a Python environment to work with Ansible in the Fedora MV of this course. To access this environment just run 
+We have set up a Python environment for working with Ansible in the Fedora MV used in this course. To access this environment, simply run:
 ```
 workon ansible
 ```
-To leave the environment use `deactivate`. 
+To exit the environment, use `deactivate`. 
 
-Ansible is already installed in this environment the `pip` package manager (e.g. check the list of installed packages with `pip freeze`). Besides `ansible`, there are some packages installed needed to make _ssh_ connections with the nodes, and to run the examples contained in this repository. For example, `paramiko` and `ansible-pylibssh`.
+Ansible is already installed in this environment via the `pip` package manager (e.g., you can check the list of installed packages with `pip freeze`). In addition to ansible, other required packages are installed to enable SSH connections with the nodes and to run the examples in this repository. For instance, `paramiko` and `ansible-pylibssh` are included.
 
 ### Adaptation for global configuration 
 This Section is only informative and not part of the proposed exercises. 
 We have made the following _twicks_:
 
-* _Paramiko->pkey.py_
+* **Paramiko** -> `pkey.py`
 ```
 /home/lab/.virtualenvs/ansible/lib/python3.12/site-packages/paramiko/pkey.py
 ```
@@ -36,7 +36,7 @@ Must be like this:
           },
 ```
 
-* `~.ssh/config` must be
+* `~.ssh/config` **adjustements**
   ```
   Host *
     HostKeyAlgorithms = +ssh-rsa
@@ -44,21 +44,24 @@ Must be like this:
    # KexAlgorithms=+diffie-hellman-group-exchange-sha1
   ```
 
-* `/etc/ssh/ssh_config.d/misshcfg.conf`
+* `/etc/ssh/ssh_config.d/misshcfg.conf` **settings**
+
+Specific algorithms for key exchange and encryption have been defined.
   ```
   KexAlgorithms=curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-   hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
 
   Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
   ```
 
-* `etc/ansible/ansible.cfg`
+* `etc/ansible/ansible.cfg` **settings**
   ```
   [paramiko_connection]
   host_key_auto_add = True
   ```
   To allow `paramiko` remember the keys of the list of *ssh* servers.
 
-* To make cryptography coding _less demanding_
+* **Reducing cryptographic overhead**
+  The following command was executed to make cryptographic operations less demanding:
   ```
   sudo update-crypto-policies --set LEGACY
   reboot
@@ -127,15 +130,15 @@ The key should have `1024 bits`. Thus, we answer both questions with `1024`.
 These are standard CLI lines needed for SSH connections and are also used in R2V and switchR3 configuration as it is shown below.
 
 #### Connection to R1
-1. Check R1 is reachable from Ansible host, e.g., PING to `172.18.0.20`.
-2. Then make the `ssh` connection: `ssh ansible@172.18.0.20`
-3. To close the connection  run `exit`.
+1. Ensure R1 is reachable from the Ansible host by **pinging** `172.18.0.20`.
+2. Establish an SSH connection with: `ssh ansible@172.18.0.20`
+3. To close the connection, type `exit`.
 
 That should open an ssh connection to R1. If not, take a second look to the steps above. Also, can the following could be tested: `ssh -oHostKeyAlgorithms=ssh-rsa ansible@172.18.0.20`.
 
 
 ### R2V router
-This a vIOS router. The configuration is as follows:
+This is a vIOS router with the following configuration.
 
 ```
 conf t
@@ -165,7 +168,7 @@ end
 write memory
 ```
 
-Besides, we must set the keys in the router:
+Besides configuring the router, we need to generate the SSH keys.
 ```
 R2V(config)#ip ssh time-out 60
 
@@ -174,8 +177,8 @@ R2V(config)#crypto key generate rsa usage-keys label router-key
 and answer 1024 to the two configuration questions that shows on.
 
 
-### switchR3 multilayer (L2/L3) switch
-Also vIOS. We would configure it as a router.
+### switchR3 (multilayer switch)
+This is a vIOS switch, configured to function as a router.
 
 ```
 enable
@@ -211,7 +214,7 @@ end
 write memory
 ```
 
-Besides, we must set the keys:
+In addition to the general setup, SSH keys must also be generated.
 ```
 switchR3(config)#ip ssh time-out 60
 
