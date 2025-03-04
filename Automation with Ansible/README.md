@@ -7,9 +7,9 @@ The tool includes a large set of modules that support tasks such as managing clo
 
 Ansible is primarily written in Python. The core engine and most of its modules are developed in Python, making it lightweight and easily extensible. Additionally, Ansible relies on Python libraries such as paramiko for SSH connections and Jinja2 for templating.
 
-## Installation notes on Fedora MV
+## Installation notes on Fedora VM
 
-We have set up a Python environment for working with Ansible in the Fedora MV used in this course. To access this environment, simply run:
+We have set up a Python environment for working with Ansible in the Fedora VM used in this course. To access this environment, simply run:
 ```
 workon ansible
 ```
@@ -223,14 +223,14 @@ switchR3(config)#crypto key generate rsa usage-keys label router-key
 and answer 1024 to the two configuration questions that shows on.
 
 
-## Ansible inventory file
+## Ansible inventory and playbook files
 Before running Ansible on the network devices, we need to set up the environment properly.
 
 Two main files are required:
 * **inventory** file
 * **playbook** file
 
-It is advisable to save these files in the same directory, _e.g._ `Ansible_projects`, similar to the one in the Fedora MV.
+It is advisable to save these files in the same directory, _e.g._ `Ansible_projects`, similar to the one in the Fedora VM.
 
 ### Inventory file
 The inventory file contains relevant information about each node in the network.
@@ -264,8 +264,28 @@ The `all:vars` group in the Ansible inventory file is used to define global vari
   - `ansible_become=true` and `ansible_become_method=enable` allow privilege escalation, needed for executing commands that require administrative rights.
   - `ansible_become_password=cisco` provides the password for privilege escalation (equivalent to entering `enable` mode in Cisco CLI).
 
+**Note:** The file `ansible.cfg` tha is in the `Ansible_projects` directory is required to easy the automation running the scripts. Contains two lines:
+```
+[defaults]
+host_key_checking = False
+```
+Ansible will not prompt for confirmation when connecting to a new host via SSH. Without this setting, Ansible would require user confirmation the first time it connects to a device, which could disrupt automated workflows.
+
+
 
 ## Examples of use
-The topology we are using is as follows
+To test Ansible open a Terminal and run some of these playbooks:
+
+```
+ansible-playbook -i hosts configure_router.yml
+ansible-playbook -i hosts unconfigure_router.yml
+ansible-playbook -i hosts run_commands.yml
+ansible-playbook -i hosts mtu.yml
+ansible-playbook -i hosts uptime.yml
+ansible-playbook -i hosts arp.yml
+```
+We pass the inventory file with the `-i` parameter and the playbook file.
+
+
 
 
