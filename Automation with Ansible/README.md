@@ -252,11 +252,11 @@ ansible_become=true
 ansible_become_method=enable
 ansible_become_password=cisco
 ```
-The **group names** (_e.g._, `Routers`) allow you to target specific sets of devices when running commands.
+The **pattern names** (_e.g._, `Routers`) allow you to target specific sets of devices when running commands.
 
 The filename of the inventory file is configurable. For example, we can name it `hosts`. It is important to save this file in the same directory as the playbook .yml files.
 
-The `all:vars` group in the Ansible inventory file is used to define global variables that apply to all devices listed in the inventory.
+The `all:vars` pattern in the Ansible inventory file is used to define global variables that apply to all devices listed in the inventory.
 
 * Centralized authentication: The `ansible_user`, `ansible_password`, and `ansible_ssh_pass` variables ensure that all devices use the same SSH credentials.
 * Network automation settings:
