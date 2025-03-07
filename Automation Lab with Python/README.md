@@ -32,7 +32,7 @@ int g0/0
 ip add 172.18.0.251 255.255.255.0
 no sh
 exit
-line vty 0 4
+line vty 0 15
 login local
 transport input all
 end
@@ -180,7 +180,7 @@ host S1
 enable password cisco
 username plm password cisco
 
-line vty 0 4
+line vty 0 15
 login local
 transport input all
 end
