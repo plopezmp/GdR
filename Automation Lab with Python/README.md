@@ -62,7 +62,8 @@ Fedora localhost has the `gedit` editor (Applications>Accessories>gedit). We can
 
 **Note:** The following examples must be run with **python3** (Python version 3) which is the default version in your system.  There are slight differences between version 2 and 3. 
 For example, `input` in v2 is `raw_input`, 
-and, strings are already sequences of bytes, so there's no need to explicitly encode them. Hence, you don't see the **b** prefix before string literals in Python 2 when working with telnetlib. The folder *Py_v2* contains the Python 2 version of the scripts.
+and, strings are already sequences of bytes, so there's no need to explicitly encode them. Hence, you don't see the **b** prefix before string literals in Python 2 when working with telnetlib. 
+<!-- this is a Commment: The folder *Py_v2* contains the Python 2 version of the scripts. -->
 
 To develop Python code it is recommended to create a separated Python environment. We have already one that can be used in this lab. To enter the environment do
 
