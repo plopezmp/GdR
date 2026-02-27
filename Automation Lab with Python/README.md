@@ -193,8 +193,7 @@ write
 2. Test the network with a PING from the Network Automation station:
    `ping 172.18.0.250`
 3. Make a Telnet:
-   `telnet 172.18.0
-   .250`
+   `telnet 172.18.0.250`
 5. Run some CLI commands:
    ```
    sh vlan brief
