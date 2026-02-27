@@ -153,7 +153,7 @@ We could add lines
 tn.write(b"int l1\n")
 tn.write(b"ip add 2.2.2.2 255.255.255.255\n")
 tn.write(b"router ospf 1\n")
-tn.write(b"network 0.0.0.0 255.255.255.255 area0\n")
+tn.write(b"network 0.0.0.0 255.255.255.255 area 0\n")
 ```
 
 to the `basicR1.py` script and configure a second loopback interface, and OSPF, like 
