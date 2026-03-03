@@ -1,0 +1,16 @@
+---
+- name: Run command on both routers
+  hosts: Routers
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Run 'show ip interface brief' on both routers
+      ios_command:
+        commands:
+          - show ip interface brief
+      register: output
+
+    - name: Display command output
+      debug:
+        var: output.stdout_lines
+

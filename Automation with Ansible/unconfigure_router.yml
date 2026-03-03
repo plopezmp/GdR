@@ -1,0 +1,21 @@
+---
+- name: Configure interface g1/0 on the router
+  hosts: R1
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Remove the configuration of interface g1/0
+      ios_command:
+        commands:
+          - configure terminal
+          - interface GigabitEthernet1/0
+          - no ip address 192.168.2.10 255.255.255.0
+          - shutdown
+          - end
+          - wr
+      register: output
+
+    - name: Display command output
+      debug:
+        var: output.stdout_lines
+

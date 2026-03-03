@@ -1,0 +1,16 @@
+---
+- name: Run command on both routers
+  hosts: Routers, Switches
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Run 'show  interface MTU' on both routers and the Switch
+      ios_command:
+        commands:
+          - show int | in line protocol|MTU
+      register: output
+
+    - name: Display command output
+      debug:
+        var: output.stdout_lines
+
