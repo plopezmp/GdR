@@ -136,6 +136,7 @@ These CLI commands are essential for enabling SSH access and are also used for t
 
 That should open an ssh connection to R1. If not, take a second look to the steps above. Also, can the following could be tested: `ssh -oHostKeyAlgorithms=ssh-rsa ansible@172.18.0.20`.
 
+If in the localhost there is a previous encrypted key for an IP address, e.g. 172.18.0.20, then, we have to remove that host from the known_hosts file by running `ssh-keygen -R 172.18.0.20` in the Terminal.
 
 ### R2V router
 This is a vIOS router with the following configuration.
